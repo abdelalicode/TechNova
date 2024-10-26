@@ -3,11 +3,15 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <bean id="userRepository" class="com.technova.repositories.UserRepositoryImpl"/>
 
-    <bean id="users" class="com.technova.technova">
-
+    <bean id="userService" class="com.technova.services.UserService">
+        <property name="userRepository" ref="userRepository"/>
     </bean>
-    <bean id="rete" class="com.technova.test">
 
+    <bean id="userController" class="com.technova.controllers.UserController">
+        <property name="userService" ref="userService"/>
     </bean>
+
+
 </beans>

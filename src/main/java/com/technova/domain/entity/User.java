@@ -1,6 +1,9 @@
 package com.technova.domain.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -13,24 +16,23 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nom;
+    private String firstName;
 
-    private String prenom;
+    private String lastName;
 
     @Column(name = "piece_identification")
     private String pieceIdentification;
 
-    private String nationalite;
+    private String nationality;
 
-    @Column(name = "date_inscription")
+    @Column(name = "date_inscription", updatable = false)
+    @CreationTimestamp
     @Temporal(TemporalType.DATE)
-    private Date dateInscription;
+    private LocalDate dateInscription;
 
     @Column(name = "date_expiration")
     @Temporal(TemporalType.DATE)
-    private Date dateExpiration;
-
-    // Getters et Setters
+    private LocalDate dateExpiration;
 
     public Long getId() {
         return id;
@@ -40,20 +42,20 @@ public class User {
         this.id = id;
     }
 
-    public String getNom() {
-        return nom;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getPrenom() {
-        return prenom;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getPieceIdentification() {
@@ -64,27 +66,27 @@ public class User {
         this.pieceIdentification = pieceIdentification;
     }
 
-    public String getNationalite() {
-        return nationalite;
+    public String getNationality() {
+        return nationality;
     }
 
-    public void setNationalite(String nationalite) {
-        this.nationalite = nationalite;
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
     }
 
-    public Date getDateInscription() {
+    public LocalDate getDateInscription() {
         return dateInscription;
     }
 
-    public void setDateInscription(Date dateInscription) {
+    public void setDateInscription(LocalDate dateInscription) {
         this.dateInscription = dateInscription;
     }
 
-    public Date getDateExpiration() {
+    public LocalDate getDateExpiration() {
         return dateExpiration;
     }
 
-    public void setDateExpiration(Date dateExpiration) {
+    public void setDateExpiration(LocalDate dateExpiration) {
         this.dateExpiration = dateExpiration;
     }
 }
